@@ -1,0 +1,2174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Soft Frame Studio | Editorial Beauty UGC Portfolio — Reha (@softframeugc.co)</title>
+  <meta name="description"
+    content="Official luxury beauty and skincare UGC portfolio by Reha (@softframeugc.co). Studio-grade commercial visuals, active ingredient synesthesia, and refined editorial direction." />
+
+  <!-- OpenGraph Metadata -->
+  <meta property="og:title" content="Soft Frame Studio | Editorial Beauty UGC Portfolio" />
+  <meta property="og:description"
+    content="Beauty UGC Creator & Commercial Director for skincare, makeup, and lifestyle brands founded by Reha." />
+  <meta property="og:image" content="assets/facescanada_strobe.jpg" />
+  <meta property="og:type" content="website" />
+
+  <!-- Typography: Editorial Serif (Playfair Display) + Clean Modern Sans (Plus Jakarta Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       1. UNIFIED LUXURY PEARL COLOR PALETTE & DESIGN TOKENS
+       ========================================================================== */
+    :root {
+      --bg-pearl: #FDF8FA;
+      /* Silky Pearl Canvas */
+      --bg-pearl-subtle: #FAF2F5;
+      /* Pearl Cream */
+      --bg-seashell: #F6DFE6;
+      /* Soft Seashell Blush */
+      --bg-seashell-light: #FFF4F7;
+      /* Delicate Pearl Wash */
+
+      --card-bg: rgba(255, 255, 255, 0.94);
+      --card-glass: rgba(255, 255, 255, 0.85);
+      --card-border: rgba(216, 164, 143, 0.35);
+      /* Rose Gold Wire */
+      --card-border-hover: rgba(181, 62, 94, 0.55);
+      /* Velvet Rose */
+
+      --text-espresso: #26151D;
+      /* Deep Espresso Plum Primary */
+      --text-muted: #6B4E5A;
+      /* Dusty Mauve Plum */
+      --text-subtle: #987282;
+      /* Subtle Mauve */
+
+      --accent-rose-gold: #D8A48F;
+      /* Rose Gold Strobe */
+      --accent-pearl-white: #FFFFFF;
+      /* Pure White Pearl */
+      --accent-velvet-rose: #B53E5E;
+      /* Signature Velvet Rose */
+      --accent-deep-rose: #8B2C46;
+      /* Deep Editorial Rose */
+
+      --shadow-subtle: 0 4px 18px rgba(38, 21, 29, 0.05);
+      --shadow-card: 0 12px 36px rgba(216, 164, 143, 0.16), 0 4px 14px rgba(38, 21, 29, 0.04);
+      --shadow-hover: 0 22px 50px rgba(181, 62, 94, 0.18), 0 8px 24px rgba(216, 164, 143, 0.22);
+
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+      --radius-pill: 9999px;
+      --radius-sm: 10px;
+      --radius-md: 18px;
+      --radius-lg: 26px;
+      --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Strict Zero-Overflow Viewport Guarantee */
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      -webkit-text-size-adjust: 100%;
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100vw;
+      box-sizing: border-box;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-pearl);
+      color: var(--text-espresso);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100vw;
+      position: relative;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Fixed Full-Page Portfolio Background Watermark (Circled Logo Artwork) */
+    .portfolio-bg-watermark {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .portfolio-bg-watermark-img {
+      width: min(85vw, 840px);
+      max-height: 85vh;
+      object-fit: contain;
+      opacity: 0.15;
+      filter: contrast(1.05) saturate(1.1);
+      animation: subtleWatermarkFloat 24s ease-in-out infinite alternate;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    @keyframes subtleWatermarkFloat {
+      0% {
+        transform: scale(1) translateY(0);
+      }
+
+      50% {
+        transform: scale(1.025) translateY(-8px);
+      }
+
+      100% {
+        transform: scale(0.985) translateY(6px);
+      }
+    }
+
+    /* Ambient Canvas */
+    #ambientCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 1;
+      max-width: 100%;
+    }
+
+    /* Atmospheric Pearl Glows (Bounded to viewport) */
+    .ambient-pearl-glow {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.55;
+      animation: pearlDrift 20s ease-in-out infinite alternate;
+      max-width: 50vw;
+      max-height: 50vh;
+    }
+
+    .glow-top-left {
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle, var(--bg-seashell) 0%, transparent 70%);
+      top: -140px;
+      left: -120px;
+    }
+
+    .glow-center-right {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(246, 223, 230, 0.8) 0%, transparent 70%);
+      top: 35%;
+      right: -160px;
+      animation-delay: -7s;
+    }
+
+    .glow-bottom-left {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, var(--bg-seashell) 0%, transparent 70%);
+      bottom: 5%;
+      left: 10%;
+      animation-delay: -14s;
+    }
+
+    @keyframes pearlDrift {
+      0% {
+        transform: translateY(0) scale(1);
+      }
+
+      50% {
+        transform: translateY(30px) scale(1.06);
+      }
+
+      100% {
+        transform: translateY(-20px) scale(0.95);
+      }
+    }
+
+    /* Universal Responsive Container (Padded so content NEVER touches screen edges) */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: clamp(16px, 4vw, 32px);
+      padding-right: clamp(16px, 4vw, 32px);
+      position: relative;
+      z-index: 10;
+      box-sizing: border-box;
+    }
+
+    /* ==========================================================================
+       2. TOP STATUS BAR & ADAPTIVE HEADER
+       ========================================================================== */
+    .top-status-bar {
+      background: linear-gradient(90deg, #FDF8FA 0%, #F6DFE6 50%, #FDF8FA 100%);
+      border-bottom: 1px solid var(--card-border);
+      padding: 8px clamp(12px, 3.5vw, 24px);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-align: center;
+      position: relative;
+      z-index: 60;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      width: 100%;
+      box-sizing: border-box;
+      overflow: hidden;
+      line-height: 1.45;
+    }
+
+    .status-badge {
+      background: var(--accent-velvet-rose);
+      color: #FFFFFF;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    .status-link {
+      color: var(--text-espresso);
+      font-weight: 700;
+      text-decoration: underline;
+    }
+
+    /* Sticky Navbar */
+    header.main-header {
+      position: sticky;
+      top: 10px;
+      z-index: 100;
+      padding: 0 clamp(12px, 3.5vw, 28px);
+      margin-top: 8px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .nav-glass-shell {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      box-sizing: border-box;
+      background: var(--card-glass);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-pill);
+      padding: 8px clamp(12px, 2.5vw, 24px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: var(--shadow-subtle);
+      transition: var(--transition-smooth);
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .nav-glass-shell:hover {
+      border-color: var(--card-border-hover);
+      box-shadow: var(--shadow-card);
+    }
+
+    /* Brand Logo Mark */
+    .brand-logo-mark {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text-espresso);
+      min-width: 0;
+      flex-shrink: 0;
+    }
+
+    .brand-logo-sigil {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1.5px solid #FFFFFF;
+      box-shadow: 0 4px 14px rgba(216, 164, 143, 0.45);
+      flex-shrink: 0;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      background: #FFFFFF;
+    }
+
+    .brand-logo-mark:hover .brand-logo-sigil {
+      transform: scale(1.08) rotate(4deg);
+      box-shadow: 0 6px 18px rgba(181, 62, 94, 0.35);
+    }
+
+    .brand-title-box {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .brand-primary-name {
+      font-family: var(--font-serif);
+      font-size: clamp(1.05rem, 2vw, 1.22rem);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.15;
+      white-space: nowrap;
+    }
+
+    .brand-handle-sub {
+      font-size: 0.72rem;
+      color: var(--text-subtle);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+
+    /* Nav Links */
+    .nav-menu-links {
+      display: flex;
+      align-items: center;
+      gap: clamp(10px, 1.8vw, 22px);
+      list-style: none;
+    }
+
+    .nav-menu-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.86rem;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      transition: var(--transition-smooth);
+      white-space: nowrap;
+    }
+
+    .nav-menu-links a:hover {
+      color: var(--text-espresso);
+      background: var(--bg-seashell);
+    }
+
+    /* Nav Right Action */
+    .nav-action-wrap {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    /* Buttons */
+    .btn-pearl-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--accent-velvet-rose) 0%, var(--accent-deep-rose) 100%);
+      color: #FFFFFF;
+      padding: 10px clamp(16px, 2vw, 22px);
+      border-radius: var(--radius-pill);
+      text-decoration: none;
+      font-size: 0.86rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 4px 16px rgba(181, 62, 94, 0.25);
+      transition: var(--transition-smooth);
+      cursor: pointer;
+      min-height: 42px;
+      white-space: nowrap;
+    }
+
+    .btn-pearl-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(181, 62, 94, 0.35);
+    }
+
+    .btn-pearl-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #FFFFFF;
+      color: var(--text-espresso);
+      padding: 10px clamp(14px, 2vw, 20px);
+      border-radius: var(--radius-pill);
+      text-decoration: none;
+      font-size: 0.86rem;
+      font-weight: 700;
+      border: 1px solid var(--card-border);
+      transition: var(--transition-smooth);
+      cursor: pointer;
+      min-height: 42px;
+      white-space: nowrap;
+    }
+
+    .btn-pearl-ghost:hover {
+      background: var(--bg-seashell);
+      border-color: var(--card-border-hover);
+      transform: translateY(-2px);
+    }
+
+    /* Dedicated Product Store Button */
+    .btn-product-store {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: linear-gradient(135deg, #FAF2F5 0%, #FFFFFF 100%);
+      color: var(--accent-velvet-rose);
+      border: 1.5px solid var(--accent-rose-gold);
+      padding: 8px 16px;
+      border-radius: var(--radius-pill);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      transition: var(--transition-smooth);
+      cursor: pointer;
+      min-height: 38px;
+      box-shadow: 0 2px 8px rgba(216, 164, 143, 0.15);
+      white-space: nowrap;
+    }
+
+    .btn-product-store:hover {
+      background: var(--accent-velvet-rose);
+      color: #FFFFFF;
+      border-color: var(--accent-velvet-rose);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(181, 62, 94, 0.3);
+    }
+
+    /* ==========================================================================
+       3. HERO SECTION (EDITORIAL BEAUTY SHOWCASE)
+       ========================================================================== */
+    .hero-wrapper {
+      padding-top: clamp(36px, 6vw, 76px);
+      padding-bottom: clamp(40px, 6vw, 76px);
+      position: relative;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .hero-editorial-center {
+      max-width: 860px;
+      margin: 0 auto;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      z-index: 5;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .creator-bio-capsule {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #FFFFFF;
+      border: 1px solid var(--card-border);
+      padding: 7px 18px;
+      border-radius: var(--radius-pill);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-espresso);
+      margin-bottom: 22px;
+      box-shadow: var(--shadow-subtle);
+      flex-wrap: wrap;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    .bio-dot-live {
+      width: 7px;
+      height: 7px;
+      background: #16A34A;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #16A34A;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4.4vw, 3.7rem);
+      font-weight: 700;
+      line-height: 1.18;
+      color: var(--text-espresso);
+      margin-bottom: 20px;
+      letter-spacing: -0.015em;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      hyphens: auto;
+      max-width: 820px;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--accent-velvet-rose);
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero-lead {
+      font-size: clamp(0.98rem, 1.35vw, 1.12rem);
+      color: var(--text-muted);
+      line-height: 1.75;
+      max-width: 680px;
+      margin: 0 auto 34px auto;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+
+    .hero-lead strong {
+      color: var(--text-espresso);
+      font-weight: 700;
+    }
+
+    .hero-actions-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+
+    /* Metrics Row */
+    .metrics-bar-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .metric-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      box-shadow: var(--shadow-subtle);
+      transition: var(--transition-smooth);
+      min-width: 0;
+    }
+
+    .metric-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--card-border-hover);
+      box-shadow: var(--shadow-card);
+    }
+
+    .metric-stat-num {
+      font-family: var(--font-serif);
+      font-size: clamp(1.4rem, 2.3vw, 1.75rem);
+      font-weight: 700;
+      color: var(--accent-velvet-rose);
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .metric-stat-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    /* ==========================================================================
+       4. SEAMLESS MARQUEE: BEAUTY BRAND ECOSYSTEM
+       ========================================================================== */
+    .marquee-section {
+      padding: 20px 0 44px;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      contain: paint;
+    }
+
+    .marquee-section::before,
+    .marquee-section::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: clamp(40px, 8vw, 100px);
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    .marquee-section::before {
+      left: 0;
+      background: linear-gradient(90deg, var(--bg-pearl) 0%, transparent 100%);
+    }
+
+    .marquee-section::after {
+      right: 0;
+      background: linear-gradient(270deg, var(--bg-pearl) 0%, transparent 100%);
+    }
+
+    .marquee-title-label {
+      text-align: center;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-velvet-rose);
+      font-weight: 800;
+      margin-bottom: 14px;
+      padding: 0 16px;
+    }
+
+    .marquee-conveyor {
+      display: flex;
+      gap: 16px;
+      width: max-content;
+      animation: smoothScroll 32s linear infinite;
+    }
+
+    .marquee-conveyor:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes smoothScroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .brand-marquee-pill {
+      background: #FFFFFF;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-pill);
+      padding: 8px clamp(14px, 2vw, 20px);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-espresso);
+      box-shadow: var(--shadow-subtle);
+      white-space: nowrap;
+      text-decoration: none;
+      transition: var(--transition-smooth);
+    }
+
+    .brand-marquee-pill:hover {
+      transform: translateY(-2px);
+      border-color: var(--card-border-hover);
+      box-shadow: var(--shadow-card);
+    }
+
+    .brand-sub-badge {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      background: var(--bg-seashell);
+      color: var(--accent-velvet-rose);
+      padding: 2px 9px;
+      border-radius: var(--radius-pill);
+      font-weight: 700;
+    }
+
+    /* ==========================================================================
+       5. 14-PIECE INSTAGRAM GRID SHOWCASE (WITH PRODUCT LINK BUTTONS)
+       ========================================================================== */
+    .portfolio-section {
+      padding-top: clamp(32px, 5vw, 60px);
+      padding-bottom: clamp(48px, 7vw, 80px);
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .section-eyebrow {
+      text-align: center;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-velvet-rose);
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .section-headline {
+      text-align: center;
+      font-family: var(--font-serif);
+      font-size: clamp(1.75rem, 3.2vw, 2.7rem);
+      margin-bottom: 12px;
+      color: var(--text-espresso);
+      line-height: 1.22;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+
+    .section-subtext {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: clamp(0.92rem, 1.3vw, 1.02rem);
+      max-width: 660px;
+      margin: 0 auto 36px;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+
+    /* Filter Bar */
+    .filter-tabs-bar {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 38px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .filter-pill-btn {
+      background: #FFFFFF;
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      padding: 9px 18px;
+      border-radius: var(--radius-pill);
+      font-size: 0.84rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      transition: var(--transition-smooth);
+      box-shadow: var(--shadow-subtle);
+      min-height: 40px;
+      box-sizing: border-box;
+    }
+
+    .filter-pill-btn .pill-count {
+      font-size: 0.7rem;
+      background: var(--bg-seashell);
+      color: var(--accent-velvet-rose);
+      padding: 2px 7px;
+      border-radius: var(--radius-pill);
+    }
+
+    .filter-pill-btn.active,
+    .filter-pill-btn:hover {
+      background: var(--accent-velvet-rose);
+      color: #FFFFFF;
+      border-color: var(--accent-velvet-rose);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(181, 62, 94, 0.3);
+    }
+
+    .filter-pill-btn.active .pill-count {
+      background: #FFFFFF;
+      color: var(--accent-velvet-rose);
+    }
+
+    /* 14-Piece Responsive Grid with Robust Breakpoints */
+    .portfolio-grid-14 {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: clamp(16px, 2.5vw, 26px);
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* Vertical 9:16 Showcase Card */
+    .showcase-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      box-shadow: var(--shadow-subtle);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      transition: var(--transition-smooth);
+      min-width: 0;
+      box-sizing: border-box;
+    }
+
+    .showcase-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--card-border-hover);
+    }
+
+    /* Photo Stage */
+    .card-photo-box {
+      width: 100%;
+      height: 360px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 16px;
+      background: #FFFFFF;
+      border: 1px solid var(--card-border);
+      box-shadow: inset 0 0 16px rgba(216, 164, 143, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-photo-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .showcase-card:hover .card-photo-box img {
+      transform: scale(1.05);
+    }
+
+    /* Top Tags Inside Photo */
+    .photo-tag-row {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 5;
+    }
+
+    .brand-tag-chip {
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(10px);
+      color: var(--text-espresso);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .format-tag-chip {
+      background: rgba(38, 21, 29, 0.8);
+      backdrop-filter: blur(10px);
+      color: #FFFFFF;
+      font-size: 0.66rem;
+      font-weight: 700;
+      padding: 4px 9px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* Hook Overlay Banner */
+    .photo-hook-overlay {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      right: 10px;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(14px);
+      border-radius: var(--radius-sm);
+      padding: 9px 12px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+      border-left: 3px solid var(--accent-velvet-rose);
+      z-index: 5;
+    }
+
+    .hook-meta-label {
+      font-size: 0.65rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--accent-velvet-rose);
+      letter-spacing: 0.08em;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .hook-body-text {
+      font-family: var(--font-serif);
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: var(--text-espresso);
+      line-height: 1.28;
+      display: block;
+    }
+
+    /* Card Text & Information */
+    .card-meta-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .card-cat-label {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-velvet-rose);
+      margin-bottom: 4px;
+    }
+
+    .card-title-text {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--text-espresso);
+      margin-bottom: 6px;
+    }
+
+    .card-staging-text {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    /* Active Ingredient Chips */
+    .card-actives-cluster {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .active-ingredient-chip {
+      font-size: 0.72rem;
+      background: var(--bg-seashell);
+      color: var(--text-muted);
+      padding: 3px 9px;
+      border-radius: var(--radius-pill);
+      font-weight: 600;
+      border: 1px solid var(--card-border);
+    }
+
+    /* Card Action Footer */
+    .card-footer-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding-top: 12px;
+      border-top: 1px dashed var(--card-border);
+      flex-wrap: wrap;
+    }
+
+    .btn-concept-brief {
+      background: transparent;
+      border: 1.5px solid var(--accent-velvet-rose);
+      color: var(--accent-velvet-rose);
+      padding: 7px 13px;
+      border-radius: var(--radius-pill);
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: var(--transition-smooth);
+      min-height: 36px;
+      white-space: nowrap;
+    }
+
+    .btn-concept-brief:hover {
+      background: var(--accent-velvet-rose);
+      color: #FFFFFF;
+      transform: translateY(-2px);
+    }
+
+    .link-reel-external {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: var(--transition-smooth);
+      white-space: nowrap;
+    }
+
+    .link-reel-external:hover {
+      color: var(--accent-velvet-rose);
+      transform: translateX(3px);
+    }
+
+    /* ==========================================================================
+       6. VALUE PILLARS (STRATEGIC AI UGC VALUE)
+       ========================================================================== */
+    .pillars-wrapper {
+      padding-top: clamp(40px, 6vw, 76px);
+      padding-bottom: clamp(44px, 6vw, 76px);
+      background: linear-gradient(180deg, transparent 0%, #FAF2F5 50%, transparent 100%);
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .pillars-grid-layout {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: clamp(16px, 2vw, 24px);
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .pillar-box {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: clamp(20px, 3vw, 30px) clamp(18px, 2.5vw, 24px);
+      box-shadow: var(--shadow-subtle);
+      transition: var(--transition-smooth);
+      min-width: 0;
+      box-sizing: border-box;
+    }
+
+    .pillar-box:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-card);
+      border-color: var(--card-border-hover);
+    }
+
+    .pillar-digit {
+      font-family: var(--font-serif);
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: var(--accent-velvet-rose);
+      margin-bottom: 10px;
+      display: block;
+      line-height: 1;
+    }
+
+    .pillar-name {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text-espresso);
+      margin-bottom: 8px;
+      line-height: 1.25;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+
+    .pillar-explanation {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+
+
+
+    /* ==========================================================================
+       8. LIGHTBOX CONCEPT & VISUAL BRIEF MODAL (WITH SHOP BUTTON)
+       ========================================================================== */
+    .modal-scrim-curtain {
+      position: fixed;
+      inset: 0;
+      background: rgba(38, 21, 29, 0.65);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      box-sizing: border-box;
+    }
+
+    .modal-scrim-curtain.open {
+      display: flex;
+    }
+
+    .modal-editorial-card {
+      background: #FFFFFF;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      max-width: min(640px, 92vw);
+      width: 100%;
+      max-height: 88vh;
+      overflow-y: auto;
+      padding: clamp(20px, 4vw, 32px);
+      position: relative;
+      box-shadow: var(--shadow-hover);
+      animation: modalFadeUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-sizing: border-box;
+    }
+
+    @keyframes modalFadeUp {
+      0% {
+        transform: translateY(18px) scale(0.97);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+    }
+
+    .modal-dismiss-btn {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: var(--bg-seashell);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      transition: var(--transition-smooth);
+    }
+
+    .modal-dismiss-btn:hover {
+      background: var(--accent-velvet-rose);
+      color: #FFFFFF;
+    }
+
+    .modal-head-grid {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 18px;
+      align-items: center;
+    }
+
+    .modal-artwork-thumb {
+      width: 80px;
+      height: 110px;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      flex-shrink: 0;
+      border: 1px solid var(--card-border);
+    }
+
+    .modal-artwork-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .modal-headline-block {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .modal-brand-super {
+      font-size: 0.76rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-velvet-rose);
+      margin-bottom: 4px;
+    }
+
+    .modal-product-main-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.2rem, 2.5vw, 1.4rem);
+      font-weight: 700;
+      color: var(--text-espresso);
+      line-height: 1.25;
+      word-break: break-word;
+    }
+
+    .modal-hook-panel {
+      background: var(--bg-seashell);
+      border-left: 4px solid var(--accent-velvet-rose);
+      padding: 11px 15px;
+      border-radius: var(--radius-sm);
+      margin-bottom: 16px;
+    }
+
+    .modal-hook-panel-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-velvet-rose);
+      font-weight: 800;
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .modal-hook-panel-quote {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 0.92rem;
+      color: var(--text-espresso);
+    }
+
+    .modal-detail-block {
+      margin-bottom: 14px;
+    }
+
+    .modal-detail-block h4 {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-subtle);
+      margin-bottom: 3px;
+    }
+
+    .modal-detail-block p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Modal Action Buttons: Product Link + Inquire */
+    .modal-button-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px dashed var(--card-border);
+    }
+
+    /* ==========================================================================
+       9. FOOTER
+       ========================================================================== */
+    footer.portfolio-footer {
+      background: #FFFFFF;
+      border-top: 1px solid var(--card-border);
+      padding-top: clamp(36px, 5vw, 56px);
+      padding-bottom: 32px;
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .footer-columns-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      gap: 36px;
+      margin-bottom: 36px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .footer-brand-summary {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      line-height: 1.65;
+      max-width: 400px;
+      margin-top: 10px;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+
+    .footer-heading {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-espresso);
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .footer-links-list {
+      list-style: none;
+    }
+
+    .footer-links-list li {
+      margin-bottom: 9px;
+    }
+
+    .footer-links-list a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: var(--transition-smooth);
+    }
+
+    .footer-links-list a:hover {
+      color: var(--accent-velvet-rose);
+      transform: translateX(3px);
+    }
+
+    .footer-baseline {
+      border-top: 1px solid var(--card-border);
+      padding-top: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.82rem;
+      color: var(--text-subtle);
+    }
+
+    /* ==========================================================================
+       10. RESPONSIVE DESIGN (UNIVERSAL DEVICE COMPATIBILITY)
+       ========================================================================== */
+    /* Tablets & Narrow Laptops (990px and below) */
+    @media (max-width: 990px) {
+      .nav-menu-links {
+        display: none !important;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 32px;
+      }
+
+      .creator-bio-capsule {
+        margin: 0 auto 16px;
+      }
+
+      .hero-lead {
+        margin: 0 auto 22px;
+      }
+
+      .hero-actions-row {
+        justify-content: center;
+      }
+
+      .metrics-bar-grid {
+        max-width: 520px;
+        margin: 0 auto;
+      }
+
+      .footer-columns-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+    }
+
+    /* Mobile Phones (768px and below) */
+    @media (max-width: 768px) {
+      header.main-header {
+        top: 8px;
+        padding: 0 clamp(8px, 2.5vw, 16px);
+        margin-top: 6px;
+      }
+
+      .nav-glass-shell {
+        padding: 8px clamp(10px, 3vw, 16px);
+      }
+
+      .hero-wrapper {
+        padding-top: 20px;
+        padding-bottom: 36px;
+      }
+
+      .metrics-bar-grid {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+        gap: 10px;
+      }
+
+      .card-photo-box {
+        height: 310px;
+      }
+
+      .card-footer-actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+      }
+
+      .btn-product-store,
+      .btn-concept-brief,
+      .link-reel-external {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .modal-button-strip {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Phablets & Large Phones (620px and below) */
+    @media (max-width: 620px) {
+      .portfolio-grid-14 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-actions-row a {
+        flex: 1 1 100%;
+        text-align: center;
+        justify-content: center;
+      }
+    }
+
+    /* Mid-range Phones (540px and below) */
+    @media (max-width: 540px) {
+      .pillars-grid-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Small Screen Phones (520px and below) */
+    @media (max-width: 520px) {
+      .brand-handle-sub {
+        display: none !important;
+      }
+
+      .brand-primary-name {
+        font-size: 0.98rem;
+      }
+
+      .pearl-sigil {
+        width: 34px;
+        height: 34px;
+        font-size: 0.92rem;
+      }
+
+      .btn-pearl-primary {
+        padding: 7px 13px;
+        font-size: 0.78rem;
+        min-height: 36px;
+      }
+
+      .nav-glass-shell {
+        padding: 6px 10px;
+        gap: 8px;
+      }
+
+      .creator-bio-capsule {
+        border-radius: var(--radius-md);
+        padding: 6px 12px;
+        font-size: 0.75rem;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .hero-title {
+        font-size: clamp(1.45rem, 6.5vw, 1.95rem);
+      }
+
+      .brand-marquee-pill {
+        padding: 6px 12px;
+        font-size: 0.88rem;
+      }
+
+      .top-status-bar {
+        font-size: 0.72rem;
+        padding: 6px 10px;
+      }
+
+      .status-badge {
+        font-size: 0.65rem;
+        padding: 2px 7px;
+      }
+
+      .modal-head-grid {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .modal-artwork-thumb {
+        margin: 0 auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Fixed Full-Page Portfolio Background Watermark (Circled Logo Artwork) -->
+  <div class="portfolio-bg-watermark" aria-hidden="true">
+    <img src="assets/softframe_bg_watermark.png" alt="" class="portfolio-bg-watermark-img" />
+  </div>
+
+  <!-- Ambient Pearl Dust Canvas -->
+  <canvas id="ambientCanvas"></canvas>
+
+  <!-- Atmospheric Pearl Glows -->
+  <div class="ambient-pearl-glow glow-top-left"></div>
+  <div class="ambient-pearl-glow glow-center-right"></div>
+  <div class="ambient-pearl-glow glow-bottom-left"></div>
+
+  <!-- Top Announcement Status Bar -->
+  <aside class="top-status-bar">
+    <span class="status-badge">Official Portfolio</span>
+    <span>Soft Frame Studio • Editorial Beauty UGC Creator Founded by <strong>Reha</strong></span>
+    <span>PR & Collabs: <a href="mailto:itsreha.softframe@gmail.com"
+        class="status-link">itsreha.softframe@gmail.com</a></span>
+  </aside>
+
+  <!-- Sticky Luxury Header -->
+  <header class="main-header">
+    <div class="nav-glass-shell">
+      <!-- Brand Mark -->
+      <a href="#" class="brand-logo-mark">
+        <img src="assets/softframe_logo.png" alt="Soft Frame Studio Logo" class="brand-logo-sigil" />
+        <div class="brand-title-box">
+          <div class="brand-primary-name">Soft Frame Studio</div>
+          <div class="brand-handle-sub">@softframeugc.co • by Reha</div>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <ul class="nav-menu-links">
+        <li><a href="#showcase">Showcases</a></li>
+        <li><a href="https://www.instagram.com/softframeugc.co?obrf=MTVrcG56ZzlqZm9tYQ==" target="_blank"
+            rel="noopener noreferrer">Instagram</a></li>
+      </ul>
+
+      <!-- Primary Action -->
+      <div class="nav-action-wrap">
+        <a href="mailto:itsreha.softframe@gmail.com?subject=Collab%20Inquiry%20%7C%20Soft%20Frame%20Studio"
+          class="btn-pearl-primary">
+          Book Reha
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==========================================================================
+         HERO SECTION: EDITORIAL BEAUTY SHOWCASE
+         ========================================================================== -->
+    <section class="hero-wrapper container">
+      <div class="hero-editorial-center">
+
+        <div class="creator-bio-capsule">
+          <span class="bio-dot-live"></span>
+          <span>UGC Creator & Director for Beauty Brands</span>
+          <span style="color:var(--text-subtle);">•</span>
+          <span style="font-size:0.76rem; color:var(--text-subtle);">Skincare • Self-Care • Lifestyle</span>
+        </div>
+
+        <h1 class="hero-title">
+          Where Editorial Aesthetics Meet <em>Studio-Grade Commercial Visuals</em>
+        </h1>
+
+        <p class="hero-lead">
+          Founded by <strong>Reha (@softframeugc.co)</strong>. Crafting high-converting visual commercials for beauty
+          and skincare brands with silky pearl warmth, tactile raw ingredient staging, and refined commercial
+          direction. 100% brand performance.
+        </p>
+
+        <div class="hero-actions-row">
+          <a href="#showcase" class="btn-pearl-primary">
+            Explore Showcases
+          </a>
+          <a href="mailto:itsreha.softframe@gmail.com" class="btn-pearl-ghost">
+            itsreha.softframe@gmail.com
+          </a>
+          <a href="https://www.instagram.com/softframeugc.co?obrf=MTVrcG56ZzlqZm9tYQ==" target="_blank"
+            rel="noopener noreferrer" class="btn-pearl-ghost">
+            Instagram @softframeugc.co ↗
+          </a>
+        </div>
+
+        <!-- Highlight Metric Capsules -->
+        <div class="metrics-bar-grid">
+          <div class="metric-card">
+            <div class="metric-stat-num">10+</div>
+            <div class="metric-stat-label">Iconic Beauty Brands Featured</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-stat-num">Ultra HD</div>
+            <div class="metric-stat-label">Studio-Grade Commercial Staging</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-stat-num">411+</div>
+            <div class="metric-stat-label">Brand & Beauty Community</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         BEAUTY BRAND ECOSYSTEM CONTINUOUS MARQUEE
+         ========================================================================== -->
+    <section class="marquee-section">
+      <div class="marquee-title-label">
+        Exact Beauty Brand Showcases from @softframeugc.co
+      </div>
+
+      <div class="marquee-conveyor">
+        <!-- Loop 1 -->
+        <a href="#showcase" class="brand-marquee-pill">FACESCANADA <span class="brand-sub-badge">Rose Gold
+            Strobe</span></a>
+        <a href="#showcase" class="brand-marquee-pill">Anua <span class="brand-sub-badge">TXA 4% Dark Spot</span></a>
+        <a href="#showcase" class="brand-marquee-pill">HYPHEN <span class="brand-sub-badge">Dual-Phase Serum</span></a>
+        <a href="#showcase" class="brand-marquee-pill">MARS Cosmetics <span class="brand-sub-badge">Magic Lip
+            Gloss</span></a>
+        <a href="#showcase" class="brand-marquee-pill">The Ordinary <span class="brand-sub-badge">AHA Peeling
+            Solution</span></a>
+        <a href="#showcase" class="brand-marquee-pill">L'Oréal Paris <span class="brand-sub-badge">Extraordinary Hair
+            Oil</span></a>
+        <a href="#showcase" class="brand-marquee-pill">Foxtale <span class="brand-sub-badge">Purple Clay Mask</span></a>
+        <a href="#showcase" class="brand-marquee-pill">DOT & KEY <span class="brand-sub-badge">Retinol Night
+            Cream</span></a>
+        <a href="#showcase" class="brand-marquee-pill">Plum <span class="brand-sub-badge">Rice Water Toner</span></a>
+        <a href="#showcase" class="brand-marquee-pill">BEET + <span class="brand-sub-badge">Vitamin A Shot</span></a>
+
+        <!-- Loop 2 for Seamless Continuous Infinite Scroll -->
+        <a href="#showcase" class="brand-marquee-pill">FACESCANADA <span class="brand-sub-badge">Rose Gold
+            Strobe</span></a>
+        <a href="#showcase" class="brand-marquee-pill">Anua <span class="brand-sub-badge">TXA 4% Dark Spot</span></a>
+        <a href="#showcase" class="brand-marquee-pill">HYPHEN <span class="brand-sub-badge">Dual-Phase Serum</span></a>
+        <a href="#showcase" class="brand-marquee-pill">MARS Cosmetics <span class="brand-sub-badge">Magic Lip
+            Gloss</span></a>
+        <a href="#showcase" class="brand-marquee-pill">The Ordinary <span class="brand-sub-badge">AHA Peeling
+            Solution</span></a>
+        <a href="#showcase" class="brand-marquee-pill">L'Oréal Paris <span class="brand-sub-badge">Extraordinary Hair
+            Oil</span></a>
+        <a href="#showcase" class="brand-marquee-pill">Foxtale <span class="brand-sub-badge">Purple Clay Mask</span></a>
+        <a href="#showcase" class="brand-marquee-pill">DOT & KEY <span class="brand-sub-badge">Retinol Night
+            Cream</span></a>
+        <a href="#showcase" class="brand-marquee-pill">Plum <span class="brand-sub-badge">Rice Water Toner</span></a>
+        <a href="#showcase" class="brand-marquee-pill">BEET + <span class="brand-sub-badge">Vitamin A Shot</span></a>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         COMPLETE 14-PIECE INSTAGRAM GRID SHOWCASE (WITH PRODUCT LINK BUTTONS)
+         ========================================================================== -->
+    <section id="showcase" class="portfolio-section container">
+      <div class="section-eyebrow">Curated Commercial Portfolio</div>
+      <h2 class="section-headline">Explore Showcases</h2>
+      <p class="section-subtext">
+        Every campaign staged and directed by Reha for @softframeugc.co. Click any product button to visit the official
+        product page, or view the concept brief for the visual breakdown.
+      </p>
+
+      <!-- Category Filter Tabs -->
+      <div class="filter-tabs-bar">
+        <button class="filter-pill-btn active" onclick="applyFilter('all', this)">
+          All Showcases
+        </button>
+        <button class="filter-pill-btn" onclick="applyFilter('skincare', this)">
+          Skincare & Serums <span class="pill-count">7</span>
+        </button>
+        <button class="filter-pill-btn" onclick="applyFilter('makeup', this)">
+          Makeup & Lip Luxury <span class="pill-count">3</span>
+        </button>
+        <button class="filter-pill-btn" onclick="applyFilter('hair', this)">
+          Hair & Night Care <span class="pill-count">2</span>
+        </button>
+        <button class="filter-pill-btn" onclick="applyFilter('broll', this)">
+          Sensory Texture B-Roll <span class="pill-count">2</span>
+        </button>
+      </div>
+
+      <!-- 14 Showcase Grid Cards -->
+      <div class="portfolio-grid-14" id="portfolioShowcaseDeck">
+        <!-- Rendered via JavaScript -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       VIEW CONCEPT & VISUAL BRIEF MODAL (WITH DIRECT PRODUCT LINK)
+       ========================================================================== -->
+  <div class="modal-scrim-curtain" id="conceptModal">
+    <div class="modal-editorial-card">
+      <button class="modal-dismiss-btn" onclick="dismissModal()">✕</button>
+
+      <div class="modal-head-grid">
+        <div class="modal-artwork-thumb">
+          <img id="modalImgTag" src="assets/facescanada_strobe.jpg" alt="Showcase Packshot" />
+        </div>
+        <div class="modal-headline-block">
+          <div class="modal-brand-super" id="modalBrandTag">FACESCANADA</div>
+          <h3 class="modal-product-main-title" id="modalProductTitle">Strobe Cream (Rose Gold)</h3>
+          <div style="font-size:0.8rem; color:var(--text-subtle); margin-top:4px;" id="modalCategoryTag">Makeup & Lip
+            Luxury</div>
+        </div>
+      </div>
+
+
+
+      <div class="modal-detail-block">
+        <h4>Visual Staging & Set Direction</h4>
+        <p id="modalStagingText">Pink tube nestled inside an open seashell resting on white sand and lustrous pearls
+          with Pearly Strobing Effect headline typography.</p>
+      </div>
+
+      <div class="modal-detail-block">
+        <h4>Key Active Ingredients & Sensory Notes</h4>
+        <p id="modalActivesText">Rose Gold Strobe Micro-Pigments, Shea Butter, Hyaluronic Acid, Velvet Texture.</p>
+      </div>
+
+      <div class="modal-detail-block">
+        <h4>Creative Direction by Reha</h4>
+        <p id="modalRationaleText">Engineered to halt scrolling by contrasting soft organic textures with crisp formula
+          benefit callouts, driving saves and high-intent consideration.</p>
+      </div>
+
+      <!-- Action Buttons in Modal: Product Link + Inquire -->
+      <div class="modal-button-strip">
+        <a id="modalProductStoreLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-product-store"
+          style="justify-content: center; font-size: 0.88rem; padding: 10px 18px;">
+          Shop Official Product ↗
+        </a>
+        <button class="btn-pearl-primary" style="justify-content: center; font-size: 0.88rem; padding: 10px 18px;"
+          onclick="applyBriefStyle()">
+          Inquire About This Concept
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="portfolio-footer">
+    <div class="container">
+      <div class="footer-columns-grid">
+        <div>
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+            <img src="assets/softframe_logo.png" alt="Soft Frame Studio Logo"
+              style="width:42px; height:42px; border-radius:50%; border:1.5px solid var(--card-border); object-fit:cover;" />
+            <div class="brand-primary-name" style="font-size: 1.35rem;">Soft Frame Studio</div>
+          </div>
+          <p class="footer-brand-summary">
+            Luxury editorial UGC portfolio for Beauty Creator Reha. Specializing in high-converting commercial beauty
+            visuals, active ingredient synesthesia, and brand storytelling.
+          </p>
+          <div style="margin-top: 16px; display: flex; gap: 10px; flex-wrap: wrap;">
+            <a href="https://www.instagram.com/softframeugc.co?obrf=MTVrcG56ZzlqZm9tYQ==" target="_blank"
+              class="btn-pearl-ghost" style="padding: 7px 16px; font-size: 0.8rem; min-height: 38px;">
+              Instagram @softframeugc.co ↗
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Showcase Categories</h4>
+          <ul class="footer-links-list">
+            <li><a href="#showcase" onclick="applyFilter('skincare')">Skincare & Serums (7)</a></li>
+            <li><a href="#showcase" onclick="applyFilter('makeup')">Makeup & Lip Luxury (3)</a></li>
+            <li><a href="#showcase" onclick="applyFilter('hair')">Hair & Night Care (2)</a></li>
+            <li><a href="#showcase" onclick="applyFilter('broll')">Sensory Texture B-Roll (2)</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Direct Inquiries</h4>
+          <ul class="footer-links-list">
+            <li><a href="mailto:itsreha.softframe@gmail.com">itsreha.softframe@gmail.com</a></li>
+            <li><a href="https://www.instagram.com/softframeugc.co?obrf=MTVrcG56ZzlqZm9tYQ==" target="_blank">Instagram
+                @softframeugc.co</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-baseline">
+        <div>
+          © 2026 Soft Frame Studio • Reha. All Rights Reserved.
+        </div>
+        <div>
+          Skincare • Self-Care • Lifestyle • AI Commercial Production
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       JAVASCRIPT LOGIC
+       ========================================================================== -->
+  <script>
+    // --- 1. GROUNDED 14-PIECE SHOWCASE DATASET WITH OFFICIAL PRODUCT STORE LINKS ---
+    const portfolioData = [
+      {
+        id: 1,
+        brand: "FACESCANADA",
+        product: "Strobe Cream (Strobe Your Way - Rose Gold)",
+        category: "makeup",
+        categoryLabel: "Makeup & Lip Luxury",
+        img: "assets/facescanada_strobe.jpg",
+        productUrl: "https://www.facescanada.com/products/strobe-cream",
+        hook: "“Pearly Strobing Effect: Coquette pearl-glow prep combining Hyaluronic Acid hydration with rose-gold luminosity.”",
+        staging: "Pink tube nestled inside an open seashell resting on white sand and lustrous pearls with Pearly Strobing Effect headline typography.",
+        actives: "Rose Gold Micro-Shimmer • Shea Butter • Hyaluronic Acid • Pearl Staging",
+        rationale: "Organic seashell staging captures viewer attention within 0.8s, tapping into high-converting dewy skin trends while conveying intense formula hydration.",
+        igLink: "https://www.instagram.com/softframeugc.co/"
+      },
+      {
+        id: 2,
+        brand: "Anua",
+        product: "Niacinamide 10% + TXA 4% Dark Spot Serum (30 mL)",
+        category: "skincare",
+        categoryLabel: "Skincare & Serums",
+        img: "assets/anua_serum.jpg",
+        productUrl: "https://anua.com/products/niacinamide-10-txa-4-dark-spot-correcting-serum",
+        hook: "“SKIN TRANSFORMATION IN 14 DAYS — DARK SPOT CORRECTING SERUM: Clinical hyperpigmentation and glass-skin tone correction.”",
+        staging: "High-contrast dark studio backdrop with glass dropper dispensing into the pink serum bottle; bold header 'SKIN TRANSFORMATION IN 14 DAYS'.",
+        actives: "10% Niacinamide • 4% Tranexamic Acid (TXA) • Alpha Arbutin • Clinical Dropper",
+        rationale: "Clinical studio staging signals medical-grade potency. The suspended glass dropper provides an ASMR visual hook that halts scrolling skeptics.",
+        igLink: "https://www.instagram.com/softframeugc.co/"
+      },
+      {
+        id: 3,
+        brand: "HYPHEN",
+        product: "Dual-Phase Advanced De-Pigmentation Serum",
+        category: "skincare",
+        categoryLabel: "Skincare & Serums",
+        img: "assets/hyphen_golden_hour.jpg",
+        productUrl: "https://letshyphen.com/products/golden-hour-glow-serum",
+        hook: "“Corrective water phase + preventive oil phase powered by 4% Tranexamic Acid, 5% Niacinamide & Licorice Oil.”",
+        staging: "Macro close-up of the gradient pink-yellow pump bottle surrounded by glowing bi-phasic liquid swirls and micro-bubbles.",
+        actives: "4% Tranexamic Acid • 5% Niacinamide • Vitamin B12 • Licorice Oil • Squalane Swirls",
+        rationale: "Visually demonstrates the shake-to-activate emulsion, proving active absorption and deep skin quench without greasiness.",
+        igLink: "https://www.instagram.com/p/Db0DVmajJ9K/"
+      },
+      {
+        id: 4,
+        brand: "MARS Cosmetics",
+        product: "Magic Lip Gloss / Lip Liquid (4 mL)",
+        category: "makeup",
+        categoryLabel: "Makeup & Lip Luxury",
+        img: "assets/mars_lip_gloss.jpg",
+        productUrl: "https://marscosmetics.com/products/magic-lip-gloss",
+        hook: "“High-impact hydro-gloss shine with weightless, non-sticky lip comfort.”",
+        staging: "Clear gloss tube and wand suspended over a rich dark purple background with dynamic pink liquid splash and water droplets.",
+        actives: "Glass Polymers • Vitamin E • Hydro-Splash Suspension • Jojoba Glaze",
+        rationale: "High-speed hydro water splash dynamics visually dramatize deep hydration and high-refraction mirror shine.",
+        igLink: "https://www.instagram.com/softframeugc.co/"
+      },
+      {
+        id: 5,
+        brand: "MARS Cosmetics",
+        product: "Edge of Desire Lip Liner",
+        category: "makeup",
+        categoryLabel: "Makeup & Lip Luxury",
+        img: "assets/mars_lip_liner.jpg",
+        productUrl: "https://marscosmetics.com/products/edge-of-desire-lip-liner",
+        hook: "“Precision lip sculpting with velvety, one-stroke transfer-proof pigment.”",
+        staging: "Brown lip pencil standing vertically, wrapped in a 3D sparkling golden light swirl on a luxury dark stage.",
+        actives: "Ultra-Glide Pigment • Shea Butter Infusion • 3D Gold Ribbon Glow • Matte Sculpt",
+        rationale: "The 3D golden spiral elevates an everyday beauty staple into a prestige luxury object worthy of high-ticket conversion.",
+        igLink: "https://www.instagram.com/softframeugc.co/"
+      },
+      {
+        id: 6,
+        brand: "The Ordinary",
+        product: "AHA 30% + BHA 2% Peeling Solution",
+        category: "skincare",
+        categoryLabel: "Skincare & Serums",
+        img: "assets/the_ordinary_peel.jpg",
+        productUrl: "https://theordinary.com/en-us/aha-30-bha-2-peeling-solution-exfoliator-100400.html",
+        hook: "“10-Minute At-Home Exfoliating Facial: Pore decongestion and surface texture renewal.”",
+        staging: "Iconic glass dropper bottle with deep ruby-red liquid illuminated against a moody, dramatic background.",
+        actives: "30% AHA (Glycolic/Lactic) • 2% BHA (Salicylic Acid) • Tasmanian Pepperberry • Ruby Glow",
+        rationale: "Atmospheric studio lighting focuses attention on the ruby suspension, instantly identifying the viral 10-minute facial.",
+        igLink: "https://www.instagram.com/p/DdTKxZQNa7e/"
+      },
+      {
+        id: 7,
+        brand: "L'Oréal Paris",
+        product: "Extraordinary Oil Hair Serum (6 Precious Floral Oils)",
+        category: "hair",
+        categoryLabel: "Hair & Night Care",
+        img: "assets/loreal_oil.jpg",
+        productUrl: "https://www.lorealparisusa.com/hair-care-hair-style/hair-treatments/elvive-extraordinary-oil-deep-nourishing-treatment",
+        hook: "“Liquid-gold frizz control, mirror shine, and 230°C thermal styling protection.”",
+        staging: "Luxe gold pump bottle bathed in warm golden light rays with editorial callout 'WORLD'S No.1 HAIR SERUM'*.",
+        actives: "Lotus • Chamomile • Tiare • Rose • Flax • Sunflower • 230°C Thermal Shield",
+        rationale: "Golden hour liquid rays visually evoke the 6 precious flower oils, communicating silky smoothness and instant frizz elimination.",
+        igLink: "https://www.instagram.com/reel/DDUe8YJzH1F/"
+      },
+      {
+        id: 8,
+        brand: "Foxtale",
+        product: "The Stunner Skin Radiance Mask",
+        category: "skincare",
+        categoryLabel: "Skincare & Serums",
+        img: "assets/foxtale_mask.jpg",
+        productUrl: "https://foxtale.in/products/the-stunner-clay-mask",
+        hook: "“Gentle Lactic Acid exfoliation + Indian Purple Clay de-tanning for instant event-ready radiance.”",
+        staging: "Deep purple jar staged against a dark velvet background with soft golden bokeh light sparkles.",
+        actives: "Indian Purple Clay • Lactic Acid • Glycolic Acid • Velvet Bokeh Sparkles",
+        rationale: "Deep royal purple tones paired with creamy clay texture scoops highlight instant glow and non-stripping exfoliation.",
+        igLink: "https://www.instagram.com/softframeugc.co/"
+      },
+      {
+        id: 9,
+        brand: "DOT & KEY",
+        product: "Pomegranate Retinol + Ceramide Night Repair Cream (25 mL)",
+        category: "hair",
+        categoryLabel: "Hair & Night Care",
+        img: "assets/dot_key_cream.jpg",
+        productUrl: "https://www.dotandkey.com/products/pomegranate-retinol-cream",
+        hook: "“Overnight barrier repair and cellular renewal with Retinol, Ceramides, and antioxidant pomegranate.”",
+        staging: "Pink jar with tilted white lid, rich pink cream dripping alongside fresh ruby pomegranate seeds.",
+        actives: "Encapsulated Retinol • 5 Essential Ceramides • Pomegranate Extract • Cream Drip",
+        rationale: "Botanical synesthesia at its finest: pairing fresh ruby pomegranate seeds with rich cream drips proves ingredient purity.",
+        igLink: "https://www.instagram.com/softframeugc.co/"
+      },
+      {
+        id: 10,
+        brand: "Plum",
+        product: "Rice Water & 3% Niacinamide Toner",
+        category: "skincare",
+        categoryLabel: "Skincare & Serums",
+        img: "assets/plum_toner.jpg",
+        productUrl: "https://plumgoodness.com/products/rice-water-niacinamide-toner",
+        hook: "“Refreshing rice-water hydration + 3% Niacinamide pore refinement and instant brightness.”",
+        staging: "Clear spray bottle framed against a dramatic crystal-blue water splash.",
+        actives: "Fermented Rice Water • 3% Niacinamide • Oat Extract • Kinetic Hydro Splash",
+        rationale: "High-speed water freeze splash conveys an unmistakable feeling of pore-tightening refreshment and weightless quench.",
+        igLink: "https://www.instagram.com/softframeugc.co/"
+      },
+      {
+        id: 11,
+        brand: "Sweet Chef",
+        product: "Beet + Vitamin A Serum Shot (30 mL)",
+        category: "skincare",
+        categoryLabel: "Skincare & Serums",
+        img: "assets/beet_serum.jpg",
+        productUrl: "https://www.target.com/p/sweet-chef-beet-vitamin-a-serum-shot",
+        staging: "Clean botanical product staging with cold-pressed beetroot extract and Vitamin A active highlights.",
+        actives: "Cold-Pressed Beetroot • Vitamin A (Retinyl Palmitate) • Sea Buckthorn • Plant Squalane",
+        rationale: "Celebrates natural root nutrition, visually demonstrating deep antioxidant nourishment and youthful skin elasticity.",
+        igLink: "https://www.instagram.com/softframeugc.co/"
+      },
+      {
+        id: 12,
+        brand: "LANEIGE",
+        product: "Water Bank Blue Hyaluronic Cream Moisturizer",
+        category: "skincare",
+        categoryLabel: "Skincare & Serums",
+        img: "assets/blue_formula.jpg",
+        productUrl: "https://www.laneige.com/int/en/skincare/water-bank-blue-hyaluronic-cream.html",
+        staging: "Minimalist cobalt blue packaging with ultra-clean studio lighting highlighting deep barrier hydration.",
+        actives: "Blue Hyaluronic Acid • Pepta-Panthenol Complex • Ceramide Barrier Shield",
+        rationale: "Focuses on clean clinical moisture replenishment, conveying lightweight hydration and 100-hour moisture barrier repair.",
+        igLink: "https://www.instagram.com/softframeugc.co/"
+      },
+      {
+        id: 13,
+        brand: "Sensory B-Roll 01",
+        product: "Pink Silky Fabric & Floating Pearls Loop",
+        category: "broll",
+        categoryLabel: "Sensory Texture B-Roll",
+        img: "assets/broll_silk_pearls.jpg",
+        productUrl: "https://www.instagram.com/softframeugc.co/",
+        hook: "“Tactile luxury satin & floating pearl aesthetic loops for high-end beauty hooks and transitions.”",
+        staging: "Draped blush-pink satin silk with lustrous white pearls for luxury brand transitions and hook backgrounds.",
+        actives: "Mulberry Silk Sheen • Natural Sea Pearls • Rose-Gold Ambient Caustics",
+        rationale: "Modular luxury transition footage designed as viral hook backgrounds and aesthetic filler reels that elevate brand prestige.",
+        igLink: "https://www.instagram.com/softframeugc.co/"
+      },
+      {
+        id: 14,
+        brand: "Sensory B-Roll 02",
+        product: "Crystal Blue Water Drop & Concentric Ripple",
+        category: "broll",
+        categoryLabel: "Sensory Texture B-Roll",
+        img: "assets/broll_water_ripple.jpg",
+        productUrl: "https://www.instagram.com/softframeugc.co/reel/DdybxsjheV0/",
+        hook: "“Slow-motion concentric water ripple symbolizing clinical moisture replenishment and cellular quench.”",
+        staging: "Slow-motion single water droplet creating concentric ripples in clear blue water to symbolize deep hydration.",
+        actives: "Ultra-Purified Water • Hydro Caustics • Concentric Wave Dynamics",
+        rationale: "A hypnotic macro droplet ripple that creates an instant pause in social feeds to visually anchor deep hydration claims.",
+        igLink: "https://www.instagram.com/softframeugc.co/reel/DdybxsjheV0/"
+      }
+    ];
+
+    // --- 2. RENDER THE 14 PORTFOLIO CARDS ---
+    function renderDeck(items) {
+      const container = document.getElementById('portfolioShowcaseDeck');
+      container.innerHTML = items.map(item => `
+        <div class="showcase-card" data-category="${item.category}">
+          <div>
+            <div class="card-photo-box">
+              <div class="photo-tag-row">
+                <span class="brand-tag-chip">${item.brand}</span>
+              </div>
+              <img src="${item.img}" alt="${item.product}" loading="lazy" />
+            </div>
+
+            <div class="card-meta-content">
+              <div class="card-cat-label">${item.categoryLabel}</div>
+              <h3 class="card-title-text">${item.product}</h3>
+              <p class="card-staging-text">${item.staging}</p>
+              
+              <div class="card-actives-cluster">
+                ${item.actives.split('•').map(act => `<span class="active-ingredient-chip">${act.trim()}</span>`).join('')}
+              </div>
+            </div>
+          </div>
+
+          <div class="card-footer-actions">
+            <!-- Dedicated Product Store Button -->
+            <a href="${item.productUrl}" target="_blank" rel="noopener noreferrer" class="btn-product-store">
+              Product Link ↗
+            </a>
+            
+            <!-- View Concept Brief Modal Trigger -->
+            <button class="btn-concept-brief" onclick="showModal(${item.id})">
+              Concept Brief
+            </button>
+            
+            <!-- Instagram Reel Link -->
+            <a href="${item.igLink}" target="_blank" rel="noopener noreferrer" class="link-reel-external">
+              Instagram Reel ↗
+            </a>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // --- 3. FILTERING ---
+    function applyFilter(cat, btn) {
+      if (btn) {
+        document.querySelectorAll('.filter-pill-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      }
+      if (cat === 'all') {
+        renderDeck(portfolioData);
+      } else {
+        const filtered = portfolioData.filter(i => i.category === cat);
+        renderDeck(filtered);
+      }
+    }
+
+
+
+
+    // --- 6. MODAL SYSTEM WITH DIRECT PRODUCT LINK ---
+    let selectedShowcaseItem = null;
+
+    function showModal(id) {
+      const item = portfolioData.find(i => i.id === id);
+      if (!item) return;
+      selectedShowcaseItem = item;
+
+      document.getElementById('modalImgTag').src = item.img;
+      document.getElementById('modalBrandTag').textContent = item.brand;
+      document.getElementById('modalProductTitle').textContent = item.product;
+      document.getElementById('modalCategoryTag').textContent = item.categoryLabel;
+      document.getElementById('modalStagingText').textContent = item.staging;
+      document.getElementById('modalActivesText').textContent = item.actives;
+      document.getElementById('modalRationaleText').textContent = item.rationale;
+
+      // Update Dedicated Product Store Link in Modal
+      const storeBtn = document.getElementById('modalProductStoreLink');
+      storeBtn.href = item.productUrl;
+
+      document.getElementById('conceptModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function dismissModal() {
+      document.getElementById('conceptModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function applyBriefStyle() {
+      if (!selectedShowcaseItem) return;
+      dismissModal();
+      const subject = encodeURIComponent(`[Collab Inquiry] ${selectedShowcaseItem.brand} Concept x Soft Frame Studio`);
+      const body = encodeURIComponent(`Hi Reha,\n\nI saw your concept for ${selectedShowcaseItem.brand} (${selectedShowcaseItem.product}) on Soft Frame Studio.\n\nWe would love to discuss a commercial UGC campaign with a similar aesthetic.`);
+      window.location.href = `mailto:itsreha.softframe@gmail.com?subject=${subject}&body=${body}`;
+    }
+
+    // Close on backdrop click & ESC
+    document.getElementById('conceptModal').addEventListener('click', (e) => {
+      if (e.target.id === 'conceptModal') dismissModal();
+    });
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') dismissModal();
+    });
+
+    // --- 7. FLOATING PEARL PARTICLES CANVAS ---
+    const canvas = document.getElementById('ambientCanvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    const pearls = [];
+
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    class FloatingPearl {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.radius = Math.random() * 2.8 + 1.2;
+        this.speedX = (Math.random() - 0.5) * 0.3;
+        this.speedY = -Math.random() * 0.3 - 0.12;
+        this.opacity = Math.random() * 0.45 + 0.2;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.y < -20 || this.x < -20 || this.x > width + 20) {
+          this.reset();
+          this.y = height + 10;
+        }
+      }
+      draw() {
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+        ctx.shadowColor = 'rgba(216, 164, 143, 0.45)';
+        ctx.shadowBlur = 8;
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    for (let i = 0; i < 22; i++) {
+      pearls.push(new FloatingPearl());
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      for (const p of pearls) {
+        p.update();
+        p.draw();
+      }
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    // Initial Execution
+    renderDeck(portfolioData);
+  </script>
+</body>
+
+</html>
